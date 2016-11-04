@@ -1,0 +1,124 @@
+.urlbg(@url){
+    background-image: url("../../public/img/bg/@{url}");
+}
+@kingdom-img-height: 16px;
+@list-kingdom: football, hockey, basketball, tennis, volleyball;
+.generator-kingdom(@index: 1) when (@index <= length(@list-kingdom)) {
+    @item: extract(@list-kingdom, @index);
+    .kingdom.@{item}::before {
+        background-position: 0 -(@index - 1)*@kingdom-img-height;
+    }
+    .generator-kingdom(@index + 1);
+}
+.generator-kingdom();
+/**/
+@calculate-img-height: 16px;
+@list-calculate: won, lost, return;
+.generator-calculate(@index: 1) when (@index <= length(@list-calculate)) {
+    @item: extract(@list-calculate, @index);
+    .calculate.@{item} {
+        background-position: 0 -(@index - 1)*@calculate-img-height;
+    }
+    .generator-calculate(@index + 1);
+}
+.generator-calculate();
+/**/
+.margin-top {
+    margin-top: 80px;
+}
+.pager {
+    margin: 0;
+}
+.nextprev {
+    text-align: right;
+    margin-right: 120px;
+}
+.pager.pull-right {
+    padding-top: 5px;
+}
+.class {
+    padding: 14px;
+    color: greenyellow;
+}
+#id {
+    border: 1px solid red;
+}
+.kingdom {
+    &, &:before{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    &:before{
+        content: '';
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        .urlbg('kingdoms16x16.png');
+    }
+}
+tr {
+    label {
+        text-align: center;
+        width: 100%;
+        &, input {
+            cursor: pointer;
+        }
+    }
+    &.marked td {
+        background-color: #FDF7E2;
+    }
+
+}
+.calculate:not(.not) {
+    width: 16px;
+    height: 16px;
+    .urlbg('calculate16x16.png');
+    margin: auto;
+}
+.glyphicon {
+    top: 0;
+    font-size: 18px;
+}
+.btn.form-control {
+    &:hover {
+        background: #eee;
+    }
+    &:not(:disabled){
+        color: red;
+    }
+}
+[type=radio]{
+    &+label {
+        opacity: 0.7;
+    }
+    &:checked {
+        &+label {
+            box-shadow: inset 0 0 5px lightgray;
+            opacity: 1;
+        }
+    }
+    &:not(:disabled) {
+        &+.glyphicon {
+            cursor: pointer;
+            &.glyphicon-flash {
+                color: #fd3427;
+            }
+            &.glyphicon-share-alt {
+                color:#2ca02c;
+            }
+            &.glyphicon-ok-sign {
+                color: #2ca02c;
+            }
+            &.glyphicon-remove-sign {
+                color: #fd3427;
+            }
+            &.glyphicon-record {
+                color: orange;
+            }
+            
+        } 
+    }
+}
+form > * {
+    margin-top: 15px;
+}
