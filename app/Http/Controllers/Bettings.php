@@ -151,10 +151,10 @@ class Bettings extends Controller {
 	$sports = DB::table('kingdom')->get();
 	// Выборка данных прогнозов
 	$items = DB::table('pages')
-		->leftjoin('users', 'pages.publishedby', '=', 'users.id')
+		->leftjoin('users_client', 'pages.publishedby', '=', 'users_client.id')
 		->whereIn('pages.id', $ids)
 		->orderBy('id', 'desc')
-		->select(['pages.id', 'pages.pagetitle', 'pages.publishedon', 'pages.uri', 'users.username'])
+		->select(['pages.id', 'pages.pagetitle', 'pages.publishedon', 'pages.uri', 'users_client.username'])
 		->get();
 	foreach ($items as $item) {
 	    $new_mass[$item->id]['id'] = $item->id;
