@@ -68,8 +68,18 @@
 		</div>
 	    </div>
 	</nav>
+	@can('administrator-access')
+	<ul class="nav nav-tabs">
+	    <li role="presentation"><a href="prognosis">Прогнозы</a></li>
+	    <li role="presentation"><a href="#">---</a></li>
+	    <li role="presentation"><a href="#">---</a></li>
+	</ul>
+	@else
+	The Current User Can't Update The Post
+	@endcan
 
-
+	@yield('content')
+	<h1 class="render_time">render time: {{ isset($startTime) ? microtime(true) - $startTime : 'undefined' }}</h1>
 	<!-- JavaScripts -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
