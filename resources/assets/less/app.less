@@ -1,3 +1,6 @@
+@green: #2ca02c;
+@red: #fd3427;
+@orange: orange;
 .urlbg(@url){
     background-image: url("../../public/img/bg/@{url}");
 }
@@ -11,20 +14,8 @@
     .generator-kingdom(@index + 1);
 }
 .generator-kingdom();
-/**/
-@calculate-img-height: 16px;
-@list-calculate: won, lost, return;
-.generator-calculate(@index: 1) when (@index <= length(@list-calculate)) {
-    @item: extract(@list-calculate, @index);
-    .calculate.@{item} {
-        background-position: 0 -(@index - 1)*@calculate-img-height;
-    }
-    .generator-calculate(@index + 1);
-}
-.generator-calculate();
-/**/
 body {
-    font-family: 'Lato';
+    font-family: 'PT Mono', monospace;
 }
 
 .fa-btn {
@@ -76,12 +67,6 @@ tr {
     }
 
 }
-.calculate:not(.not) {
-    width: 16px;
-    height: 16px;
-    .urlbg('calculate16x16.png');
-    margin: auto;
-}
 .glyphicon {
     top: 0;
     font-size: 18px;
@@ -113,14 +98,14 @@ tr {
             &.glyphicon-share-alt {
                 color:#2ca02c;
             }
-            &.glyphicon-ok-sign {
-                color: #2ca02c;
+            &.glyphicon-ok-circle {
+                color: @green;
             }
-            &.glyphicon-remove-sign {
-                color: #fd3427;
+            &.glyphicon-remove-circle {
+                color: @red;
             }
             &.glyphicon-record {
-                color: orange;
+                color: @orange;
             }
 
         } 
@@ -128,4 +113,34 @@ tr {
 }
 form > * {
     margin-top: 15px;
+}
+.render_time {
+    font-size: 16px;
+}
+.nav-tabs > li:first-child {
+    margin-left: 30px;
+}
+.calculate:not(.not) {
+    position: relative;
+    top: 1px;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    text-align: center;
+}
+.won:before {
+    content: "\e089";
+    color: @green;
+}
+.lost:before {
+    content: "\e088";
+    color: @red;
+}
+.return:before {
+    content: "\e165";
+    color: @orange;
 }
