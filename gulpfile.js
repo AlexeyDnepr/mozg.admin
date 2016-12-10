@@ -1,5 +1,4 @@
 var elixir = require('laravel-elixir');
-
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -10,26 +9,11 @@ var elixir = require('laravel-elixir');
  | file for our application, as well as publishing vendor resources.
  |
  */
-/*
- elixir(function(mix) {
- mix.sass('app.scss');
- });
- elixir(function(mix) {
- mix.less("app.less")
- .version('public/css/app.css');
- });
- */
 elixir(function (mix) {
     mix.less('app.less')
-            .styles([
-                'app.css'
-            ], 'public/css/all.css', 'public/css')
-            .scripts([
-                'custom.js'
-            ])
-            .version(["public/css/all.css", "public/js/all.js"]);
-
-
-//    .version(["public/js/all.js"]);
-
+            .styles(['flags.css', 'app.css'], 'public/css/all.css', 'public/css')
+            .scripts(['radio_btn.js'], "public/js/radio_btn.js")
+            .scripts(['leagues.js'], "public/js/leagues.js")
+            .scripts(['all.js'], "public/js/all.js")
+            .version(["public/css/all.css", "public/js/radio_btn.js", "public/js/leagues.js", "public/js/all.js"]);
 });
